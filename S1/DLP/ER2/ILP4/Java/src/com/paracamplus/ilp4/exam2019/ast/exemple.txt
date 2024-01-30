@@ -1,0 +1,29 @@
+exemple de base: 
+class File {
+    var isOpen;
+    method close() ( self.isOpen = false )
+    method prn(v) ( if self.isOpen then print(v) else print ("CLOSED") )
+}
+
+autoclose f = new File(true) in ( g = f; f.prn("mot1 ") );
+g.prn("mot2");
+
+
+
+Transformation: 
+
+class File {
+    var isOpen;
+    method close() ( self.isOpen = false )
+    method prn(v) ( if self.isOpen then print(v) else print ("CLOSED") )
+}
+
+let f = new File(true)  in 
+    try {
+        g = f; 
+        f.prn("mot1 ");
+    }catch(e) {
+        // print("error in expr2);
+    }finally{
+        close();
+    }

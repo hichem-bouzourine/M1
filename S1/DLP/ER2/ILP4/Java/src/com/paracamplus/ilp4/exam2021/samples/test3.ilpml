@@ -1,0 +1,2 @@
+v = 4;
+res1 = match v with A(a,b,c) then 1 else -1;

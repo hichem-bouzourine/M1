@@ -1,0 +1,18 @@
+test1:
+    v = $Test1(2,4,2);
+    res1 = match v with A(a,b,c) then 1 else -1;
+
+    Vu que v match exactement le pattern donc on execute le block then donc on retourne '1'
+
+test2:
+    v = $Test2(2);
+    res1 = match v with A(a,b,c) then 1 else -1;
+
+    nombre de args < nombre de vars --> on execute le else donc on retourne '-1'
+
+
+test3:
+    v = 4;
+    res1 = match v with A(a,b,c) then 1 else -1;
+
+    v n'est pas du type Tag, donc on retourne '-1'

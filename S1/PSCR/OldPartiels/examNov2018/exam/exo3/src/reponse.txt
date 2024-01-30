@@ -1,0 +1,17 @@
+Q1 : Combien de processus sont crées pour N=3 ?
+
+Réponse : 27
+
+
+Q2 : Combien de processus sont crées en fonction de N ?
+
+Réponse : 3^N
+n1 = 3
+n2 = 9
+n3 = 27
+n4 = 81
+
+
+Q3 : Pour N=3; Combien a-t-on de processus au maximum en parallèle à un instant donné ?
+
+Réponse :

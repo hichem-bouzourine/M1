@@ -1,0 +1,30 @@
+dans le package "com.paracamplus.ilp4.exam2019"
+
+/compiler/interfaces :
+    IASTCautoclose : extends IASTautoclose
+    IASTCvisitor : extends IASTvisitor (du partiel)
+
+
+/compiler/ast :
+    ASTCautoclose : extends ASTautoclose    implements IASTCautoclose
+
+
+/compiler/normalizer :
+    INormalizationFactory: extends com.paracamplus.ilp4.compiler.normalizer.INormalizationFactory
+
+    NormalizationFactory : extends com.paracamplus.ilp4.compiler.normalizer.NormalizationFactory
+                           implements com.paracamplus.ilp4.exam2019.compiler.normalizer.INormalizationFactory
+    Normalizer : extends com.paracamplus.ilp4.compiler.normalizer.Normalizer 
+                 implements IASTvisitor (du partiel)
+
+/compiler/test :
+    CompilerTest.java : extends com.paracamplus.ilp4.compiler.test.CompilerTest
+        on import IASTfactory, ILPMLParser et Compiler du partiel.
+
+/compiler :
+
+    GlobalVariableCollector.java : extends com.paracamplus.ilp4.compiler.GlobalVariableCollector
+                                   implements com.paracamplus.ilp4.partiel2019.compiler.interfaces.IASTCvisitor
+
+    FreeVariableCollector.java :   extends com.paracamplus.ilp4.compiler.FreeVariableCollector
+                                   implements com.paracamplus.ilp4.partiel2019.compiler.interfaces.IASTCvisitor

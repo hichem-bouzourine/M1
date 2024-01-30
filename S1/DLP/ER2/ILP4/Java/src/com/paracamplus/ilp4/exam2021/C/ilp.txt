@@ -1,0 +1,22 @@
+
+1. Ajouter la definition a ILP_Object dans le fichier ilp.h.
+2. Définition de la classe en ilp_nomStructure.c et
+3. Création de ilp_nomStructure.h et déclarer la fonction de l’allocation + les fonction de
+ilp_nomStructure.c
+4. Déclaration des fonction qui retournent un ILP_Object, comme ilp_make_sum(ILP_Object o1)
+et faire la vérification des paramètres.
+
+5. dans le Compilateur:
+    1. introduire Compiler.java qui va inclure les includes vers les fichiers .h
+    2. introduire GlobalVariableStuff.java pour renomer la fonction crée en ilp_nomStructure.c
+    en leur
+    donnant un nom lisible par l’utilisateur comme “makeSum” au lieu de
+    “ilp_make_sum”.
+    3. creation du fichier CompilerTest.java en changeant scriptCommand + Compiler +
+    GlobalVariableStuff
+
+6. dans l’interpreteur:
+    1. pour chaque fonction, créer une classe qui etendre Primitive qui contient le nom finale, + ecrire la
+    logique dedans.
+    2. définir la fonction dans le fichier GlobalVariableStuff.java
+    3. modifier InterpreterTest en changeant la reference de GlobalVariableStuff

@@ -1,0 +1,4 @@
+    let cte = 2 in (
+        let list = [ cte * x for x in range(10) ] in
+            print(list)
+    )
