@@ -144,7 +144,7 @@ int main() {
 
     pthread_t prods[NB_PRODUCTEURS];
     for (int i = 0; i < NB_PRODUCTEURS; i++) {
-        char *idProduct = (i == 0) ? "Pomme" : "Banane";
+        char *idProduct = (i == 0) ? "Pomme" : "Orange";
         printf("Id Product : %s \n", idProduct);
         struct ParametresThread *paramProducteur = allouerParametres(t, idProduct, cible, -1, NULL);
         pthread_create(&prods[i], NULL, producteur, (void *)paramProducteur);
