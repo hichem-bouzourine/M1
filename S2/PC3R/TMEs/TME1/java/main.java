@@ -5,13 +5,13 @@ public class main {
     public static void main(String[] args) {
         int maximum = 8;
         int cible = 4;
-        int nombre_producteur = 5;
-        int nombre_consommateur = 4;
-        int compteur_tapis = nombre_producteur * cible;
-        Tapis tapis = new Tapis(maximum, compteur_tapis);
+        int NB_PRODUCTEURS = 5;
+        int NB_CONSOMMATEURS = 4;
+        int cptTapis = NB_PRODUCTEURS * cible;
+        Tapis tapis = new Tapis(maximum, cptTapis);
 
         LinkedList<Producteur> producteurs = new LinkedList<Producteur>();
-        for (int i = 0; i < nombre_producteur; i++) {
+        for (int i = 0; i < NB_PRODUCTEURS; i++) {
             String nomProd = i == 0 ? "Pomme" : "Orange";
             Producteur p = new Producteur(tapis, nomProd, cible);
             producteurs.add(p);
@@ -19,7 +19,7 @@ public class main {
         }
 
         LinkedList<Consommateur> consumers = new LinkedList<Consommateur>();
-        for (int i = 0; i < nombre_consommateur; i++) {
+        for (int i = 0; i < NB_CONSOMMATEURS; i++) {
             Consommateur c = new Consommateur(tapis, i);
             consumers.add(c);
             c.start();
