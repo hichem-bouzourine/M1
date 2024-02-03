@@ -79,10 +79,19 @@ divideBy9Mod17 = [x | x <- [1..254], x `mod` 17 == 0]
 
 sortedList = sort [5,2,8,3,1,2,8,1,2,68,1,489,4,12,4,2,3,54,462,34]
 
---  filters 
+-- ! filters 
 listBiggerThan5 = filter (>5) sortedList
+
+-- ! foldl : apply an operation on each item of a list (from left to right)
+
+multOfList = foldr (*) 11 [2, 3, 4, 5]
+
+-- ! list comprehension
+power3List = [3^n | n <- [1..10]]
+
+
 
 main :: IO ()
 main = do
-    iterateOverList listBiggerThan5
-    -- print(numberInList primeNumbers 8)
+    iterateOverList power3List
+    -- print(multOfList)
