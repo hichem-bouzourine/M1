@@ -2,6 +2,7 @@ import Data.List
 import System.IO
 import GHC.Base (maxInt, minInt)
 import Text.XHtml.Transitional (primHtmlChar)
+import Data.Void (Void)
 
 -- Your other functions or definitions go here
 
@@ -89,9 +90,134 @@ multOfList = foldr (*) 11 [2, 3, 4, 5]
 -- ! list comprehension
 power3List = [3^n | n <- [1..10]]
 
+multTable = [x*y | x <-[1..2], y<-[3..4]]
 
+-- ! Tuples
+randTuple = (1, "first tuble")
+
+-- Tuple pairs
+bobSmith = ("bob smith", 22)
+
+bobName = fst bobSmith
+bobAge = snd bobSmith
+
+-- ! Zip --> combine two arrays by creating pair tuples
+cities = ["Paris", "Champs-sur-Marne", "Versailles", "Saint-Denis"]
+postalCodes = [75, 77, 78, 93]
+
+citiesAndCodes = zip cities postalCodes
+
+-- ! Functions =====> `do` (to create a bloc of code) 
+greetingByName :: IO()
+greetingByName = do 
+    putStrLn "What's your name ?"
+    name <- getLine
+    putStrLn ("Hello " ++ name)
+
+addMe :: Integer -> Integer -> Integer
+addMe x y = x + y
+
+-- combineTuples :: (String , Int) -> (String , Int) -> (String , Int)
+-- combineTuples tuple1 tuple2
+--     | not (checkTupleType tuple1) = error "Error"
+--     | not (checkTupleType tuple2) = error "Error"
+--     | otherwise = (fst tuple1 ++ fst tuple2, snd tuple1, snd tuple2)
+
+-- checkTupleType :: (String, Int) -> Bool
+-- checkTupleType (x, y)
+--     | typeOf x != String = False
+--     | typeOf y != Int = False
+--     | otherwise = True
+         
+addTuple :: (Int, Int) -> (Int, Int) -> (Int, Int)
+addTuple (x1,y1) (x2, y2) = (x1+x2, y1+y2)
+
+whatAge :: Int -> String 
+whatAge 16 = "You can drive"
+whatAge 18 = "You can vote"
+whatAge 21 = "You're an adult, pay taxes"
+whatAge _ = "Nothing important"
+
+-- ! Recursive functions
+factorialFun :: Integer -> Integer
+factorialFun 0 = 1
+factorialFun x = x * factorialFun (x-1)
+
+-- ! Guard to replace `if`
+isOdd :: Integer -> Bool
+isOdd x 
+    | x`mod`2==1 = True
+    | otherwise = False
+
+-- ! using `where`
+batAvgRating :: Double -> Double -> String
+batAvgRating hits atBats
+    | avg <= 0.200 = "Terrible score"
+    | avg <= 0.250 = "Average player"
+    | otherwise = "jsp"
+    where avg = hits / atBats
+
+getListItems :: [Integer] -> String
+getListItems [] = "Empty list"
+getListItems (x:xs) = "1st element is " ++ show x ++ " rest is " ++ show xs
+
+-- 
+
+getFirstItem :: String -> String
+getFirstItem [] = "Empty list"
+getFirstItem all@(x:xs) = "First letter of " ++ all ++ " is " ++ show x
+
+-- ! High order functions
+
+times4 :: Integer -> Integer
+times4 x = x*4
+
+-- map is used to apply a function on each element of a list
+listTimes4 = map times4 [1..5] 
+
+multBy4 :: [Integer] -> [Integer]
+multBy4 [] = []
+multBy4 (x:xs) = times4 x : multBy4 xs 
+
+
+areStringsEq :: [Char] -> [Char] -> Bool
+areStringsEq [] [] = True
+areStringsEq (x:xs) (y:ys) = x==y && areStringsEq xs ys
+areStringsEq _ _ = False
+
+-- ! Pass a function to another function
+
+doMult :: (Integer -> Integer) -> Integer
+doMult func = func 3
+
+-- ! Lambda function
+-- prefix it with `\`
+dbl1To10 a = map (\x ->x*10) a   -- ! receive `x` return `x*10`
+
+-- if operator
+doubleEvenNumber :: Integer -> Integer
+doubleEvenNumber y = 
+    if y`mod`2 == 0 then 
+        y*2
+    else y
+
+doubleEvenNumbers :: [Integer] -> [Integer]
+doubleEvenNumbers [] = []
+doubleEvenNumbers (x:xs) = do
+    doubleEvenNumber x : doubleEvenNumbers xs
+
+-- ! Case
+
+getClass ::Integer -> String
+getClass n = case n of
+    5 -> "Go to Kingergarten"
+    6 -> "Go to elementary school"
+    _ -> "Go away"
 
 main :: IO ()
 main = do
-    iterateOverList power3List
-    -- print(multOfList)
+    -- iterateOverList (doubleEvenNumbers [1..10])
+    -- print(head citiesAndCodes)
+    -- greetingByName
+    print (getClass 8)
+    
