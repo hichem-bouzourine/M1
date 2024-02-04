@@ -214,10 +214,98 @@ getClass n = case n of
     6 -> "Go to elementary school"
     _ -> "Go away"
 
+
+-- ! Create a type with enumeration
+data BaseballPlayer = 
+    Pitcher
+    | Catcher
+    | Infielder
+    | Outfield
+    deriving Show
+
+barryBonds :: BaseballPlayer -> Bool
+barryBonds Pitcher = True
+barryBonds _ = False
+
+
+-- custom Data type
+data Customer = Customer String String Double
+    deriving Show -- ! deriving (fnc) means we can apply the `fnc` on the type
+
+user :: Customer
+user = Customer "Hichem" "Bouzourine" 22
+
+-- I want to return the 3rd element
+getBalance :: Customer -> Double
+getBalance (Customer _ _ c) = c 
+
+data RPS = Rock
+    | Paper
+    | Scissor
+
+shoot :: RPS -> RPS -> String
+shoot Paper Rock = "Paper won"
+shoot Paper Scissor = "Schissor won"
+shoot Rock Scissor = "Rock won"
+shoot Rock Paper = "Paper won"
+shoot Scissor Paper = "Scissor won"
+shoot Scissor Rock = "Rock won"
+shoot _ _ = "tied"
+
+-- Shape is either Circle with 3 params or Rectangle with 2 params
+data Shape = 
+    Circle Float Float Float 
+    | Rectangle Float Float
+    deriving Show
+
+area :: Shape -> Float
+area (Circle _ _ r) = pi*r
+area (Rectangle a b) = a*b
+
+-- ! Type classes like Num Eq Or Show
+
+data Employee = Employee {  name :: String,
+                            position :: String,
+                            idNum :: Integer
+                            } deriving (Eq, Show)
+
+emp1 :: Employee = Employee { name="Hichem", position="First",idNum=22}
+emp2 :: Employee = Employee { name="Bouzourine", position="Second",idNum=23}
+
+
+-- ! Changing the behaviour of a deriving funct
+data ShirtSize = S | M | L
+instance Eq ShirtSize where
+    S == S = True
+    M == M = True
+    L == L = True
+    _ == _ = False
+
+instance Show ShirtSize where
+    show S = "Small"
+    show M = "Medium"
+    show L = "Large"
+
+smallAvailable = S `elem` [S, M, L]
+theSize = show S
+
+-- ! Classes
+class MyEq a where 
+    areEqual :: a -> a -> Bool
+
+instance MyEq ShirtSize where
+    areEqual S S = True  
+    areEqual M M = True  
+    areEqual L L = True  
+    areEqual _ _ = False  
+
+-- optimzed fibo
+fibo = 1 : 1 : [ a + b | (a, b) <- zip fibo (tail fibo) ]
+
 main :: IO ()
 main = do
     -- iterateOverList (doubleEvenNumbers [1..10])
     -- print(head citiesAndCodes)
     -- greetingByName
-    print (getClass 8)
+    print (theSize)
     
