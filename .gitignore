@@ -10,5 +10,6 @@
 /*/bin/
 bin/
 */SAM/TME/*.csv
+*/SAM/*/*.db
 
 doc
