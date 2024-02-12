@@ -36,8 +36,8 @@ func lecteur(canal_worker chan string) {
 }
 
 func calculateDifferenceDates(start string, end string) int {
-	arrive, _ := time.Parse("15:04:05", start)
-	departed, _ := time.Parse("15:04:05", end)
+	arrive, _ := time.Parse("00:00:00", start)
+	departed, _ := time.Parse("00:00:00", end)
 	diff := departed.Sub(arrive)
 	return int(diff.Minutes())
 }
