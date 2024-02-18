@@ -1,4 +1,6 @@
 import Data.Data (typeOf)
+import Data.Map (Map)
+import qualified Data.Map as Map
 
 et :: Bool -> Bool -> Bool
 et True True = True
@@ -9,7 +11,7 @@ si True sithen _ = sithen
 si False _ sielse = sielse
 
 -- count number of repetition of an element in a list using "Foldr"
-cc e [a] = foldr (\x acc -> if x==e then acc+1 else acc) 0 [a]
+-- cc e [a] = foldr (\x acc -> if x==e then acc+1 else acc) 0 [a]
 
 data MoyenPaiement =
      Cheque Integer
@@ -46,8 +48,26 @@ setNewLogin pers newLogin = pers {login=newLogin}
 
 getNameAge :: PersonalInfo -> (Name, Age)
 getNameAge PersonalInfo {lastName=n, age=a} = (n,a)
+
+data Coord  = C Integer Integer deriving(Show, Eq)
+data Case = CaseVide | Metal | Terre | Entree | Sortie
+
+data Niveau = Niveau { 
+    hNiveau :: Int ,
+    lNiveau :: Int ,
+    casesNiveau :: Map (Int, Int) Case
+} 
+
+niveau = Niveau {
+    hNiveau = 2,
+    lNiveau = 4,
+    casesNiveau = Map.fromList [((2,0), Metal), ((2,1), Entree), ((2,3), Terre), ((2,4), Metal)]
+}
+
+
 main :: IO()
 main = do
     -- print (printingMoyPaiement $ Carte "Hichem" "Bouzourine")
     -- print (setNewLogin hichem "hi")
-    print (getNameAge hichem)
+    -- print (getNameAge hichem)
+    print (Map.keys (casesNiveau niveau) !! 0)
