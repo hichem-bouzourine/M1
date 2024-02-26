@@ -20,7 +20,6 @@ struct tapis {
     int maximum;
 };
 
-pthread_mutex_t mutTapis = PTHREAD_MUTEX_INITIALIZER;
 struct tapis * t_prod, *t_cons;
 ft_scheduler_t scheduler_prod,scheduler_cons;
 
