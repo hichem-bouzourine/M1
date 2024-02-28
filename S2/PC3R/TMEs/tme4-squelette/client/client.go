@@ -64,17 +64,7 @@ func (p *personne_emp) initialise(line int) {
 }
 
 func (p *personne_emp) travaille() {
-	if p.status=='R' {
-
-
-
-
-
-
-
-
-		p.status = 'C'
-	}
+	// A FAIRE
 }
 
 func (p *personne_emp) vers_string() string {
