@@ -6,3 +6,8 @@ type Personne struct {
 	Age    int
 	Sexe   string
 }
+
+type ChanDeMessage struct {
+	canal_de_retour     chan string
+	num_ligne int
+}
