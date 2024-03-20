@@ -307,5 +307,5 @@ main = do
     -- iterateOverList (doubleEvenNumbers [1..10])
     -- print(head citiesAndCodes)
     -- greetingByName
-    print (theSize)
+    print (name emp1)
     
